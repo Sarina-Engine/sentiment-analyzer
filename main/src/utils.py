@@ -1,8 +1,8 @@
 import os
 import torch
 import numpy as np
-from model import SentimentModel
-from data import create_data_loader
+from .model import SentimentModel
+from .data import create_data_loader
 
 MAX_LEN = 128
 BATCH_SIZE = 1

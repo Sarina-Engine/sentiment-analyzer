@@ -1,9 +1,11 @@
 import os
+import pathlib
 from transformers import BertConfig, AutoTokenizer
-from utils import load_model
+from .utils import load_model
 
+ABS_PATH = pathlib.Path().resolve()
 
-OUTPUT_PATH = "model/pretrained_models"
+OUTPUT_PATH = os.path.join(ABS_PATH, "src/model/pretrained_models")
 
 models_list = [
     'DIGIKALA',
