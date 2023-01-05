@@ -15,10 +15,10 @@ class PredictSentimentStub(object):
             channel: A grpc.Channel.
         """
         self.Predict = channel.unary_unary(
-                '/PredictSentiment/Predict',
-                request_serializer=prediction__pb2.Comment.SerializeToString,
-                response_deserializer=prediction__pb2.Prediction.FromString,
-                )
+            '/PredictSentiment/Predict',
+            request_serializer=prediction__pb2.Comment.SerializeToString,
+            response_deserializer=prediction__pb2.Prediction.FromString,
+        )
 
 
 class PredictSentimentServicer(object):
@@ -33,34 +33,34 @@ class PredictSentimentServicer(object):
 
 def add_PredictSentimentServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Predict': grpc.unary_unary_rpc_method_handler(
-                    servicer.Predict,
-                    request_deserializer=prediction__pb2.Comment.FromString,
-                    response_serializer=prediction__pb2.Prediction.SerializeToString,
-            ),
+        'Predict': grpc.unary_unary_rpc_method_handler(
+            servicer.Predict,
+            request_deserializer=prediction__pb2.Comment.FromString,
+            response_serializer=prediction__pb2.Prediction.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'PredictSentiment', rpc_method_handlers)
+        'PredictSentiment', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class PredictSentiment(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def Predict(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                target,
+                options=(),
+                channel_credentials=None,
+                call_credentials=None,
+                insecure=False,
+                compression=None,
+                wait_for_ready=None,
+                timeout=None,
+                metadata=None):
         return grpc.experimental.unary_unary(request, target, '/PredictSentiment/Predict',
-            prediction__pb2.Comment.SerializeToString,
-            prediction__pb2.Prediction.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             prediction__pb2.Comment.SerializeToString,
+                                             prediction__pb2.Prediction.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
