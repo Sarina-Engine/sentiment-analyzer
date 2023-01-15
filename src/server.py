@@ -1,22 +1,21 @@
 import grpc
 from concurrent import futures
-from grpc_configs.prediction_pb2_grpc import PredictSentimentServicer
-from grpc_configs.prediction_pb2 import (Prediction,
-                                         Digisentiment,
-                                         Snappsentiment,
-                                         Binarysentiment,
-                                         Multisentiment,
-                                         Sentiment
-                                         )
-from grpc_configs import prediction_pb2_grpc
+from prediction_pb2 import (Prediction,
+                            Digisentiment,
+                            Snappsentiment,
+                            Binarysentiment,
+                            Multisentiment,
+                            Sentiment
+                            )
+import prediction_pb2_grpc
 
 from torch.nn.functional import softmax
-from src.data import Preprocessor
-from src.utils import get_data_from_loader, id2label
-from src import configs
+from ai.data import Preprocessor
+from ai.utils import get_data_from_loader, id2label
+from ai import configs
 
 
-class PredictSentiments(PredictSentimentServicer):
+class PredictSentiments(prediction_pb2_grpc.PredictSentimentServicer):
     def __init__(self):
         super().__init__()
         self.preprocess = Preprocessor()

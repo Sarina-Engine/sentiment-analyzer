@@ -5,7 +5,7 @@ from .utils import load_model
 
 ABS_PATH = pathlib.Path().resolve()
 
-OUTPUT_PATH = os.path.join(ABS_PATH, "src/model/pretrained_models")
+OUTPUT_PATH = os.path.join(ABS_PATH, "ai/model/pretrained_models")
 
 models_list = [
     'DIGIKALA',

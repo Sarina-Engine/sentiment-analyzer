@@ -1,9 +1,9 @@
 from io import StringIO
 from flask import Flask, request, jsonify
 from torch.nn.functional import softmax
-from .src.data import Preprocessor
-from .src.utils import get_data_from_loader, id2label
-from .src import configs
+from .ai.data import Preprocessor
+from .ai.utils import get_data_from_loader, id2label
+from .ai import configs
 
 
 app = Flask(__name__)

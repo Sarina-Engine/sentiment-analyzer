@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import prediction_pb2 as prediction__pb2
+import prediction_pb2 as prediction__pb2
 
 
 class PredictSentimentStub(object):
@@ -15,7 +15,7 @@ class PredictSentimentStub(object):
             channel: A grpc.Channel.
         """
         self.Predict = channel.unary_unary(
-            '/PredictSentiment/Predict',
+            '/prediction.PredictSentiment/Predict',
             request_serializer=prediction__pb2.Comment.SerializeToString,
             response_deserializer=prediction__pb2.Prediction.FromString,
         )
@@ -40,7 +40,7 @@ def add_PredictSentimentServicer_to_server(servicer, server):
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        'PredictSentiment', rpc_method_handlers)
+        'prediction.PredictSentiment', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -59,7 +59,7 @@ class PredictSentiment(object):
                 wait_for_ready=None,
                 timeout=None,
                 metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PredictSentiment/Predict',
+        return grpc.experimental.unary_unary(request, target, '/prediction.PredictSentiment/Predict',
                                              prediction__pb2.Comment.SerializeToString,
                                              prediction__pb2.Prediction.FromString,
                                              options, channel_credentials,
